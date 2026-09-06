@@ -1,0 +1,200 @@
+---
+sidebar_position: 10
+title: Exemple complet
+description: Référence complète de toutes les fonctionnalités disponibles pour rédiger un article.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Exemple complet
+
+Référence de toutes les fonctionnalités disponibles pour écrire une page du wiki.
+
+## Titres
+
+# Titre niveau 1
+## Titre niveau 2
+### Titre niveau 3
+#### Titre niveau 4
+
+(Un seul `#` par page normalement — le titre principal vient déjà du frontmatter/`title`, donc en pratique tu commences tes sections à `##`.)
+
+## Mise en forme du texte
+
+- **Texte en gras** avec `**texte**`
+- *Texte en italique* avec `*texte*`
+- ***Gras et italique*** avec `***texte***`
+- ~~Texte barré~~ avec `~~texte~~`
+- <u>Texte souligné</u> avec `<u>texte</u>` (balise HTML, pas de syntaxe Markdown native)
+- <mark>Texte surligné</mark> avec `<mark>texte</mark>`
+- <small>Petit texte</small> avec `<small>texte</small>`
+- Texte<sup>exposant</sup> avec `texte<sup>exposant</sup>`
+- Texte<sub>indice</sub> avec `texte<sub>indice</sub>`
+- Touche clavier : <kbd>Ctrl</kbd> + <kbd>C</kbd> avec `<kbd>Ctrl</kbd>`
+- `Code inline` avec des backticks simples
+
+Retour à la ligne forcé : termine une ligne par deux espaces  
+ou utilise `<br/>` directement.<br/>
+Un saut de paragraphe classique se fait juste avec une ligne vide.
+
+## Listes
+
+Liste à puces, avec sous-niveaux :
+
+- Premier élément
+  - Sous-élément
+    - Sous-sous-élément
+- Deuxième élément
+
+Liste numérotée :
+
+1. Étape une
+2. Étape deux
+   1. Sous-étape
+3. Étape trois
+
+Liste de tâches (checkboxes) :
+
+- [x] Tâche terminée
+- [ ] Tâche à faire
+- [ ] Autre tâche
+
+## Liens
+
+- [Lien interne vers une autre page](/docs/intro)
+- [Lien externe](https://github.com/V3X/v3x-wiki)
+- Lien automatique : [https://v3x.example.com](https://v3x.example.com)
+- [Lien avec info-bulle](https://github.com "Texte affiché au survol")
+
+## Citations
+
+> Citation simple.
+
+> Citation avec plusieurs niveaux.
+>
+> > Citation imbriquée.
+
+## Notes de bas de page
+
+Voici une affirmation qui a besoin d'une source[^1]. Et une autre[^2].
+
+[^1]: Première note de bas de page.
+[^2]: Deuxième note, qui peut contenir du `code` ou du **gras**.
+
+## Tableaux
+
+Avec alignement des colonnes (`:---`, `:---:`, `---:`) :
+
+| Paramètre | Valeur par défaut | Description |
+|:---|:---:|---:|
+| `port` | `8080` | Port d'écoute |
+| `timeout` | `30s` | Délai d'expiration |
+| `retries` | `3` | Tentatives |
+
+## Blocs de code
+
+Basique :
+
+```bash
+docker compose up -d
+```
+
+Avec titre et numéros de ligne :
+
+```javascript title="exemple.js" showLineNumbers
+function hello(name) {
+  return `Bonjour, ${name}`;
+}
+```
+
+Avec lignes surlignées (utile pour pointer une ligne précise) :
+
+```javascript {2}
+function hello(name) {
+  return `Bonjour, ${name}`; // cette ligne est surlignée
+}
+```
+
+## Encadré personnalisé (ton style, accent orange)
+
+<div className="v3x-callout">
+  Encadré avec ton style perso : fond surface, bord gauche orange.
+</div>
+
+## Admonitions natives Docusaurus
+
+Chacune garde sa couleur sémantique par défaut (indépendante de ta palette) :
+
+:::note
+Information neutre, à titre indicatif.
+:::
+
+:::tip
+Conseil ou astuce.
+:::
+
+:::info
+Complément d'information non critique.
+:::
+
+:::warning
+Point d'attention à lire avant de continuer.
+:::
+
+:::danger
+Action risquée ou irréversible.
+:::
+
+Avec un titre personnalisé :
+
+:::tip[Astuce du jour]
+Le contenu de l'admonition, avec un titre custom au lieu de "tip".
+:::
+
+## Section repliable
+
+<details>
+<summary>Cliquer pour afficher les détails</summary>
+
+Contenu caché par défaut — pratique pour des infos secondaires ou une longue liste d'options avancées. Peut contenir n'importe quel Markdown, y compris :
+
+```bash
+une commande
+```
+
+</details>
+
+## Onglets (Tabs)
+
+Utile pour montrer la même chose sur plusieurs OS/langages, par exemple :
+
+<Tabs>
+  <TabItem value="linux" label="Linux" default>
+```bash
+    sudo apt install exemple
+```
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+```powershell
+    winget install Exemple
+```
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+```bash
+    brew install exemple
+```
+  </TabItem>
+</Tabs>
+
+## Image
+
+![Texte alternatif](/img/logo.svg)
+
+## Séparateur horizontal
+
+Trois tirets sur leur propre ligne créent une ligne de séparation :
+
+---
+
+Fin de l'article.

@@ -1,0 +1,8 @@
+{
+  "label": "Démarrer",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Bienvenue sur le wiki V3X ! Cette section vous guidera à travers les étapes essentielles pour bien démarrer avec V3X.  \nVous y trouverez des informations sur l'installation, la configuration initiale et les premières étapes pour utiliser efficacement la plateforme."
+  }
+}

@@ -1,0 +1,384 @@
+/* ============================================================
+   V3X — thème torrent/P2P
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ---- Palette & polices ---- */
+:root {
+  --ifm-color-primary: #ff5921;
+  --ifm-color-primary-dark: #e64e1a;
+  --ifm-color-primary-darker: #d94a18;
+  --ifm-color-primary-darkest: #b33d14;
+  --ifm-color-primary-light: #ff7040;
+  --ifm-color-primary-lighter: #ff7c4f;
+  --ifm-color-primary-lightest: #ff9970;
+
+  --ifm-font-family-monospace: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --ifm-code-font-size: 90%;
+
+  --v3x-bg: #f6f4f1;
+  --v3x-surface: #ffffff;
+  --v3x-border: #e4e1db;
+  --v3x-accent: #d9481a;
+  --v3x-accent-bg: #ff5921;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #ff5921;
+  --ifm-color-primary-dark: #e64e1a;
+  --ifm-color-primary-darker: #d94a18;
+  --ifm-color-primary-darkest: #b33d14;
+  --ifm-color-primary-light: #ff7040;
+  --ifm-color-primary-lighter: #ff7c4f;
+  --ifm-color-primary-lightest: #ff9970;
+
+  --ifm-background-color: #121316;
+  --ifm-background-surface-color: #1b1d21;
+  --ifm-navbar-background-color: #1b1d21;
+  --ifm-footer-background-color: #121316;
+  --ifm-footer-color: #a7a9ae;
+
+  --v3x-bg: #121316;
+  --v3x-surface: #1b1d21;
+  --v3x-border: #2a2c31;
+  --v3x-accent: #ff5921;
+  --v3x-accent-bg: #ff5921;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.35);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--v3x-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--v3x-accent-bg);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary-light);
+}
+
+html {
+  scrollbar-color: var(--v3x-accent-bg) var(--v3x-bg);
+  scroll-behavior: smooth;
+}
+
+/* ---- Bouton "remonter en haut" ---- */
+.theme-back-to-top-button {
+  background-color: var(--v3x-surface) !important;
+  border: 1px solid var(--v3x-accent-bg) !important;
+}
+
+.theme-back-to-top-button::after {
+  background-color: var(--v3x-accent-bg) !important;
+}
+
+/* ============================================================
+   Éléments réutilisables dans les articles (.mdx)
+   ============================================================ */
+
+.v3x-callout {
+  border: 1px solid var(--v3x-border);
+  border-left: 3px solid var(--v3x-accent-bg);
+  background: var(--v3x-surface);
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+}
+
+.v3x-title {
+  color: var(--v3x-accent);
+}
+
+.markdown li::marker {
+  color: var(--v3x-accent);
+  font-weight: 600;
+}
+
+.markdown hr {
+  border: none;
+  border-top: 2px solid var(--v3x-accent-bg);
+}
+
+.external-link-button {
+  display: inline-flex;
+  gap: 8px;
+  line-height: 25px;
+}
+
+.external-link-button svg {
+  flex-shrink: 0;
+  position: relative;
+  top: 1.5px;
+}
+
+/* ============================================================
+   Page de catégorie générée automatiquement (ex: /docs/demarrer)
+   ============================================================ */
+
+.theme-doc-markdown h1:first-child {
+  position: relative;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown h1:first-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 3px;
+  background: var(--v3x-accent-bg);
+  border-radius: 2px;
+}
+
+.breadcrumbs__link {
+  background: transparent;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: rgba(255, 89, 33, 0.12);
+  color: var(--v3x-accent);
+}
+
+.card {
+  position: relative;
+  background: var(--v3x-surface) !important;
+  border: 1px solid var(--v3x-border) !important;
+  border-radius: 10px;
+  padding: 1.5rem 1.6rem !important;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--v3x-accent-bg);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--v3x-accent-bg) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+
+.card:hover::before {
+  transform: scaleY(1);
+}
+
+.card svg {
+  color: var(--v3x-accent-bg);
+  fill: var(--v3x-accent-bg);
+  width: 22px;
+  height: 22px;
+}
+
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ifm-font-color-base);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  color: var(--ifm-font-color-secondary, #8b8d93);
+  font-size: 0.85rem;
+  font-family: var(--ifm-font-family-monospace);
+  margin: 0;
+}
+
+.card h2::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--v3x-accent-bg);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover h2::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pagination-nav__link {
+  background: var(--v3x-surface);
+  border: 1px solid var(--v3x-border);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--v3x-accent-bg);
+  transform: translateY(-2px);
+}
+
+.pagination-nav__sublabel {
+  color: var(--ifm-font-color-secondary, #8b8d93);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pagination-nav__label {
+  color: var(--v3x-accent);
+  font-weight: 700;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-secondary, #8b8d93);
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--v3x-accent);
+}
+
+.table-of-contents__left-border {
+  border-left-color: var(--v3x-accent-bg);
+}
+
+/* ============================================================
+   Sidebar de gauche (catégories & liens)
+   ============================================================ */
+
+.menu__caret:before,
+.menu__link--sublist:after {
+  background: none !important;
+  filter: none !important;
+  -webkit-mask: var(--ifm-menu-link-sublist-icon) 50% / 2rem 2rem no-repeat;
+  mask: var(--ifm-menu-link-sublist-icon) 50% / 2rem 2rem no-repeat;
+  background-color: var(--v3x-accent-bg) !important;
+}
+
+.theme-doc-sidebar-item-category-level-1 {
+  background: var(--v3x-surface);
+  border: 1px solid var(--v3x-border);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+  border-radius: 10px;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__link {
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list {
+  padding: 0.25rem 0.6rem 0.6rem;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list .menu__list-item {
+  margin-top: 0.15rem;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list .menu__link {
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.theme-doc-sidebar-menu .menu__link:hover {
+  background: rgba(255, 89, 33, 0.08);
+}
+
+.theme-doc-sidebar-menu .menu__link--active {
+  color: var(--v3x-accent);
+  background: rgba(255, 89, 33, 0.1);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Barre de recherche locale (navbar)
+   ============================================================ */
+
+.navbar__search-input {
+  width: clamp(140px, 22vw, 220px) !important;
+  background: var(--v3x-surface) !important;
+  border: 2px solid var(--v3x-border) !important;
+  border-radius: 999px !important;
+  color: var(--ifm-font-color-base) !important;
+  padding: 0.5rem 1rem 0.5rem 2.25rem !important;
+  transition: border-color 0.15s ease, width 0.15s ease;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--v3x-accent-bg) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  width: clamp(160px, 32vw, 260px) !important;
+}
+
+.navbar__search-input::placeholder {
+  font-size: 0.85rem !important;
+}
+
+[data-theme='dark'] .navbar__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme='light'] .navbar__search-input::placeholder {
+  color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.navbar__search svg {
+  color: var(--v3x-accent-bg) !important;
+  fill: var(--v3x-accent-bg) !important;
+}
+
+/* On masque le badge Ctrl+K natif, trop instable à intégrer proprement pour l'instant */
+.navbar__search [class*='searchHintContainer'] {
+  display: none !important;
+}
+
+/* Sous 768px : recherche réduite à une icône */
+@media (max-width: 768px) {
+  .navbar__search-input {
+    width: 44px !important;
+    padding: 0.5rem !important;
+    padding-left: 2.1rem !important;
+    cursor: pointer;
+  }
+
+  .navbar__search-input::placeholder {
+    color: transparent !important;
+  }
+
+  .navbar__search-input:focus {
+    width: 160px !important;
+    padding-left: 2.25rem !important;
+    cursor: text;
+  }
+
+  .navbar__search-input:focus::placeholder {
+    color: var(--ifm-font-color-secondary, #8b8d93) !important;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "logo.alt": {
+    "message": "V3X",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Wiki": {
+    "message": "Wiki",
+    "description": "Navbar item with label Wiki"
+  }
+}

@@ -1,0 +1,92 @@
+---
+sidebar_position: 6
+---
+
+# VPN & Confidentialité
+
+<small className="v3x-title">Temps moyen de lecture estimé à <u>__5 minutes__</u>.</small>
+
+---
+
+<small>Sur un tracker, la confidentialité se joue à deux niveaux :<br/>
+Ce que le site conserve de toi et ce que les autres membres voient de toi dans le "swarm" *(le nuage de pairs qui s'échangent un fichier)*.<br/>
+Les deux sont indépendants — voici la vérité sur chaque côté.</small>
+
+### <h className="v3x-title">Ce que V3X garde de ton IP</h>
+> V3X garde le <h className="v3x-title">strict minimum</h> de ton IP et <h className="v3x-title">jamais en clair</h>.
+
+- Ton ratio et ton temps de seed sont calculés à partir de simples compteurs d'octets, aucune ip n'est stockée.
+- Aucune IP enregistrée sur tes sessions de connexion.
+- Pour les journaux de modération *(bans, suppressions..) → Ton IP est anonymisée par un hachage irréversible *(HMAC)*. Il est donc impossible de remonter à l'adresse IP réelle.
+- Le tracker garde l'IP des pairs en mémoire vive uniquement le temps du swarm *(indispensable pour que les pairs se joignent)*, jamais journalisée sur le disque.
+
+<div className="v3x-callout">
+  <h className="v3x-title">**En clair :**</h><br/>
+  V3X ne conserve pas ton adresse IP en clair. Le hachage permet à la modération de repérer un contournement de bannissement *(même hash = même IP)* sans jamais lire ton IP réelle.
+</div>
+
+---
+
+### <h className="v3x-title">Ce que les autres membres voient</h>
+
+BitTorrent est du pair-à-pair :<br/>
+Pour t'envoyer des données, les autres membres du swarm doivent voir ton adresse IP<br/>
+C'est inévitable, sur V3X comme sur n'importe quel tracker. Et ton fournisseur d'accès *(FAI)* voit que tu utilises BitTorrent.
+
+---
+
+### <h className="v3x-title">Faut-il un VPN ?</h>
+
+<h className="v3x-title">**Oui**</h> ! C'est une <u>excellente idée</u>.<br/>
+Un VPN masque ton IP réelle à ton FAI et aux autres pairs : ils voient l'IP du VPN, pas la tienne.
+
+---
+
+### <h className="v3x-title">Le piège n°1 : Le Port Forwarding</h>
+
+Un VPN peut te rendre "non-connectable" :
+1. Si personne ne peut ouvrir de connexion vers toi.
+2. Tu télécharges encore mais tu seedes très mal.
+3. Ton ratio stagne.
+> La parade est l'ouverture de port *([port forwarding](/docs/demarrer/qbittorrent#port-découte--port-forwarding "Configurer qBittorrent pour V3X"))*.
+
+- Choisis un VPN qui propose le port forwarding :
+
+| <center>VPN</center> | <center>PORT FORWARDING</center> | <center>VALEUR</center> |
+|:---|:---:|---:|
+| <center>ProtonVPN</center> | <center>🟢</center> | <center>PAYANT</center> |
+| <center>AirVPN</center> | <center>🟢</center> | <center>PAYANT</center> |
+| <center>NordVPN</center> | <center>🔴</center> | <center>GRATUIT</center> |
+
+Les VPN gratuits et certains réglages par défaut de NordVPN ne le font pas → tu ne pourras pas seeder correctement.
+- Active l'ouverture de port dans ton VPN et récupère le numéro de port attribué.
+- Reporte ce port dans qBittorrent dans : <h className="v3x-title">Options ▸ Connexion ▸ Port Entrant</h>.
+- Lie qBittorrent à l'interface du VPN *(bind d'interface)* pour ne jamais faire fuiter ton IP si le VPN tombe *(voir <h className="v3x-title">[Configurer qBittorrent pour V3X](/docs/demarrer/qbittorrent#lier-qbittorrent-%C3%A0-ton-vpn "Configurer qBittorrent pour V3X")</h>)*.
+
+:::warning
+Un VPN gratuit ou sans port forwarding veut dire que tu resteras non-connectable et ton ratio ne montera pas.<br/>
+C'est **LE** point à ne pas rater pour un tracker.
+:::
+
+---
+
+### <h className="v3x-title">Vérifier que tu es connectable</h>
+
+- Dans qBittorrent, l'icône réseau en bas à droite doit être verte *(pas orange "pare-feu / non-connectable")*.
+- Si tes torrents restent "stalled" alors que la fiche indique des seeders, tu es probablement non-connectable → revois ton port forwarding.
+- Fais un test de fuite d'IP et de DNS avec le VPN actif pour confirmer que ta vraie IP n'apparaît nulle part.
+
+---
+
+### <h className="v3x-title">L'essentiel à retenir</h>
+
+- Côté V3X, ton IP n'est ni stockée en clair ni partagée.<br/>
+- Le VPN te protège vis-à-vis de ton FAI et des autres pairs du swarm.<br/>
+- Les deux protections se complètent.
+
+<div className="v3x-callout">
+  <h className="v3x-title">**Le bon combo :**</h><br/>
+  VPN avec Port Forwarding + qBittorrent lié à son interface = Anonyme vis-à-vis de l'extérieur et permet de seed à plein régime.
+</div>
+
+---

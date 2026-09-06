@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Démarrer": {
+    "message": "Démarrer",
+    "description": "The label for category 'Démarrer' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Démarrer.link.generated-index.description": {
+    "message": "Bienvenue sur le wiki V3X ! Cette section vous guidera à travers les étapes essentielles pour bien démarrer avec V3X.  \nVous y trouverez des informations sur l'installation, la configuration initiale et les premières étapes pour utiliser efficacement la plateforme.",
+    "description": "The generated-index page description for category 'Démarrer' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Communauté": {
+    "message": "Communauté",
+    "description": "The label for category 'Communauté' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Communauté.link.generated-index.description": {
+    "message": "Bienvenue dans la section Communauté ! Ici, vous découvrirez comment rejoindre et interagir avec la communauté V3X.  \nVous y trouverez des informations sur les forums, les canaux de discussion, les événements communautaires et les opportunités de contribution.  \nRejoignez-nous pour partager vos idées, poser des questions et collaborer avec d'autres membres de V3X.",
+    "description": "The generated-index page description for category 'Communauté' in sidebar 'tutorialSidebar'"
+  }
+}
