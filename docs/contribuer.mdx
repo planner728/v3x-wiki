@@ -1,0 +1,247 @@
+---
+sidebar_position: 10
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Contribuer
+
+<div className="v3x-callout">
+  Copie les blocs dont tu as besoin dans ton propre fichier. Avant d'ouvrir une PR, assure-toi de bien respecter ce guide.
+</div>
+
+--- 
+
+## Titres
+
+Un seul `#` par page :  
+Le titre principal vient déjà du frontmatter (`title`), donc commence tes sections à `###`.  
+Tous les titres sont en orange automatiquement.
+
+--- 
+
+## Mise en forme du texte
+
+- **Gras** : `**texte**`
+- *Italique* : `*texte*`
+- ***Gras et italique*** : `***texte***`
+- ~~Barré~~ : `~~texte~~`
+- <u>Souligné</u> : `<u>texte</u>`
+- <mark>Surligné</mark> : `<mark>texte</mark>`
+- <small>Petit texte</small> : `<small>texte</small>`
+- Exposant<sup>2</sup> : `texte<sup>2</sup>`
+- Indice<sub>2</sub> : `texte<sub>2</sub>`
+- Touche clavier : <kbd>Ctrl</kbd> + <kbd>C</kbd> avec `<kbd>Ctrl</kbd>`
+- `Code inline` avec des backticks simples
+
+Pour mettre un mot en orange sans en faire un titre (donc sans qu'il apparaisse dans le sommaire), utilise `<strong className="v3x-title">Texte en orange</strong>`.
+
+Retour à la ligne forcé : deux espaces en fin de ligne, ou `<br/>`. Une ligne vide fait un vrai saut de paragraphe.
+
+--- 
+
+## Listes
+
+- Premier élément
+  - Sous-élément
+- Deuxième élément
+
+1. Étape une
+2. Étape deux
+   1. Sous-étape
+
+Liste de tâches :
+
+- [x] Tâche terminée
+- [ ] Tâche à faire
+
+--- 
+
+## Liens
+
+- [Lien interne](/docs/demarrer/bienvenue)
+- [Lien externe](https://github.com/planner728/v3x-wiki)
+- [Lien avec info-bulle](https://github.com/planner728/v3x-wiki "Texte au survol")
+
+Bouton avec icône (utilisé sur la page qBittorrent) :
+
+<a href="https://github.com/planner728/v3x-wiki" target="_blank" rel="noopener noreferrer" className="button button--primary external-link-button">
+  Accéder au dépôt
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M14 3h7v7" />
+    <path d="M10 14L21 3" />
+    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+  </svg>
+</a>
+
+--- 
+
+## Citations
+
+> Citation simple.
+
+> Niveau 1
+>
+> > Niveau 2
+
+--- 
+
+## Notes de bas de page
+
+Une affirmation qui a besoin d'une source[^1].
+
+[^1]: Contenu de la note, peut contenir du `code` ou du **gras**.
+
+--- 
+
+## Tableaux
+
+Alignement des colonnes avec `:---`, `:---:`, `---:` :
+
+| Paramètre | Valeur par défaut | Description |
+|:---|:---:|---:|
+| `port` | `8080` | Port d'écoute |
+| `timeout` | `30s` | Délai d'expiration |
+| `retries` | `3` | Tentatives |
+
+--- 
+
+## Blocs de code
+
+Basique :
+
+```bash
+docker compose up -d
+```
+
+Avec titre, numéros de ligne, et une ligne surlignée :
+
+```javascript title="exemple.js" showLineNumbers
+function hello(name) {
+  return `Bonjour, ${name}`;
+}
+```
+
+```javascript {2}
+function hello(name) {
+  return `Bonjour, ${name}`; // ligne surlignée
+}
+```
+
+--- 
+
+## Encadré (`v3x-callout`)
+
+<div className="v3x-callout">
+  Contenu de l'encadré.
+</div>
+
+--- 
+
+## Admonitions
+
+Gardent leur couleur d'origine (verte, bleue, jaune, rouge), indépendante de la charte du site.
+
+:::note
+Information neutre.
+:::
+
+:::tip
+Astuce.
+:::
+
+:::info
+Complément non critique.
+:::
+
+:::warning
+Point d'attention.
+:::
+
+:::danger
+Action risquée ou irréversible.
+:::
+
+Titre personnalisé :
+
+:::tip[Astuce du jour]
+Contenu.
+:::
+
+Imbriquées :
+
+:::tip
+Conseil principal.
+
+:::warning
+Cas particulier à surveiller.
+:::
+
+--- 
+
+## Section repliable
+
+<details>
+<summary>Cliquer pour afficher les détails</summary>
+
+Peut contenir n'importe quel Markdown, y compris un bloc de code :
+
+```bash
+une commande
+```
+
+</details>
+
+--- 
+
+## Onglets
+
+<Tabs>
+  <TabItem value="linux" label="Linux" default>
+```bash
+sudo apt install exemple
+```
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+```powershell
+winget install Exemple
+```
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+```bash
+brew install exemple
+```
+  </TabItem>
+</Tabs>
+
+Avec `groupId`, le choix (ex: "Windows") reste le même sur tous les blocs `Tabs` partageant ce `groupId`, ailleurs sur la même page — pratique pour un article avec plusieurs sections par OS.
+
+--- 
+
+## Image
+
+![Texte alternatif](/img/logo.svg)
+
+--- 
+
+## Séparateur horizontal
+
+Trois tirets sur leur propre ligne :
+
+---
+
+## Frontmatter
+
+En plus de `sidebar_position`, `title` et `description` :
+
+```yaml
+sidebar_label: Titre court dans le menu (si différent du vrai titre)
+hide_table_of_contents: true
+pagination_label: Nom personnalisé pour Précédent/Suivant
+custom_edit_url: https://github.com/planner728/v3x-wiki/edit/main/docs/ton-fichier.mdx
+```
+
+Tout ce qui précède (callout, boutons, `<mark>`, `<kbd>`, `<details>`...) demande un fichier `.mdx`, pas `.md`.
+
+--- 

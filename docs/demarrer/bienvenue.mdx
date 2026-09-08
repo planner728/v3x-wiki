@@ -1,0 +1,48 @@
+---
+sidebar_position: 0
+---
+
+# Bienvenue sur V3X
+
+<small>Temps moyen de lecture estimé à <h className="v3x-title"><u>__3 minutes__</u></h>.</small>
+
+---
+
+### Qu'est-ce-que V3X ?
+
+V3X est un tracker privé : une plateforme d'indexation qui met en relation les membres et coordonne le partage.<br/>
+Le site ne transporte jamais les fichiers, ils circulent directement entre membres via le protocole BitTorrent.
+
+Le tracker repose sur un équilibre simple :<br/>
+- Les uploaders alimentent le catalogue.
+- Les seeders garantissent la disponibilité.
+
+Chacun contribue à sa façon.
+
+---
+
+### Comment ça fonctionne concrètement ?
+
+1. Avant toute chose, tu devras configurer ton client BitTorrent (voir [Configuer qBittorrent pour V3X](/docs/demarrer/qbittorrent/ "Configurer qBittorrent pour V3X"))
+2. Tu récupères un fichier `.torrent` sur une fiche du catalogue.
+3. Tu l'ouvres dans ton client BitTorrent ([qbittorrent](https://www.qbittorrent.org/ "Télécharger qbittorrent") recommandé) : Le téléchargement démarre auprès d'autres membres.
+4. Une fois complet, tu laisses le torrent en partage (seed) : c'est ainsi que tu contribues au réseau en perpétuant ce partage.
+
+---
+
+
+
+- Chaque membre possède une passkey unique et secrète.
+> C'est elle qui t'identifie auprès du tracker (voir [Passkey & URL d'annonce](/docs/demarrer/passkey_url/ "Passkey & URL d'annonce")).
+
+:::danger
+Ta passkey est **strictement personnelle**, il ne faut <u>**en aucun cas la partager**</u>.
+:::
+
+- Ton [ratio](/docs/demarrer/ratio_seed/ "Ratio, Seed & Freeleech") te suit : reste en seed pour le garder sain.
+- À l'inscription, V3X t'offre 75 Gio d'upload de bienvenue.
+> De quoi télécharger sereinement le temps d'apprendre à seeder.
+- Seeder rapporte des [points bonus](http://localhost:3000/ "Comprendre les points bonus"), échangeables contre des avantages en boutique.
+- Les permissions sont vérifiées côté serveur, inutile de bricoler l'interface.
+
+---

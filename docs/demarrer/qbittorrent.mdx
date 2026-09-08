@@ -1,0 +1,190 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Configurer qBittorrent pour V3X
+
+<small>Temps moyen de lecture estimé à <h className="v3x-title"><u>__6 minutes__</u></h>.</small>
+
+---
+
+<small>qBittorrent est le client recommandé sur V3X : gratuit, open-source, sans pub, disponible sur Windows, macOS et Linux.<br/>
+Voici la configuration complète pour un tracker privé et le réglage VPN qui évite les fuites d'IP.</small>
+
+### Installer qBittorrent
+
+1. Télécharge qBittorrent depuis [le site officiel](https://qbittorrent.org/ "Installer qBittorrent"), jamais depuis un lien tiers.
+2. Installe la version "stable" pour ton système.
+
+<Tabs>
+  <TabItem value="linux" label="Linux" default>
+<a
+  href="https://sourceforge.net/projects/qbittorrent/files/qbittorrent-appimage/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="button button--primary external-link-button"
+>
+  <center>Télécharger pour Linux</center>
+  <center><svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 3h7v7" />
+    <path d="M10 14L21 3" />
+    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+  </svg></center>
+</a>
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+  <a
+  href="https://sourceforge.net/projects/qbittorrent/files/qbittorrent-win32/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="button button--primary external-link-button"
+>
+  <center>Télécharger pour Windows</center>
+  <center><svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 3h7v7" />
+    <path d="M10 14L21 3" />
+    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+  </svg></center>
+</a>
+  </TabItem>
+  <TabItem value="mac" label="MacOS">
+  <a
+  href="https://sourceforge.net/projects/qbittorrent/files/qbittorrent-mac/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="button button--primary external-link-button"
+>
+  <center>Télécharger pour MacOS</center>
+  <center><svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 3h7v7" />
+    <path d="M10 14L21 3" />
+    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+  </svg></center>
+</a>
+  </TabItem>
+</Tabs>
+
+3. Refuse les logiciels additionnels éventuellement proposés par l'installeur.
+
+---
+
+### Réglages tracker privé (obligatoire)
+
+<small>V3X est un tracker privé : les mécanismes de découverte publique doivent être coupés, sinon tu exposes le swarm privé à l'extérieur <h className="v3x-title">*(avertissement possible)*</h>.</small>
+
+1. Ouvre <h className="v3x-title">Outils ▸ Options ▸ BiTorrent</h>.
+2. <h className="v3x-title">DÉCOCHE</h> "Activer le DHT" *(réseau décentralisé)*.
+3. <h className="v3x-title">DÉCOCHE</h> "Activer l'échange de pairs" *(PeX)*.
+4. <h className="v3x-title">DÉCOCHE</h> "Activer la découverte de pairs locaux" *(LSD)*.
+5. Chiffrement : <h className="v3x-title">Mets</h> "Autoriser le chiffrement" ou "Exiger", au choix.
+6. <h className="v3x-title">Valide et Applique</h>.
+
+:::warning
+DHT, PeX et LSD DÉSACTIVÉS :<br/>
+C'est la règle nº 1 sur un tracker privé. Un client qui les laisse actifs peut être détecté et sanctionné.
+:::
+
+---
+
+### Lier qBittorrent à ton VPN
+<small>Le réglage le plus important si tu utilises un VPN :<br/>
+Forcer qBittorrent à ne passer <h className="v3x-title">QUE</h> par l'interface réseau du VPN.<br/>
+Si le VPN tombe, qBittorrent se coupe tout seul *(kill-switch au niveau de l'appli)* au lieu de basculer sur ta vraie connexion et d'exposer ton IP.</small>
+
+1. Connecte d'abord ton VPN *(son adaptateur réseau doit exister sur la machine)*.
+2. Dans qBittorrent : Outils ▸ Options ▸ Avancé.
+3. Champ "Interface réseau" :<br/>
+Sélectionne l'adaptateur de ton VPN *(ex. "wg0", "ProtonVPN", "Mullvad", "tun0" etc..)* <h className="v3x-title">**SURTOUT PAS**</h> "Toute interface".
+4. Champ "Adresse IP optionnelle à lier" :<br/>
+Laisse "Toutes les adresses IPv4" *(ou l'IP du VPN si tu la connais)*.
+5. Applique. 
+
+Désormais, VPN coupé = qBittorrent ne communique plus *(aucune fuite)*.
+
+:::info
+Si l'interface VPN n'apparaît pas dans la liste :<br/>
+Lance le VPN <h className="v3x-title">**AVANT**</h> d'ouvrir la liste déroulante, puis rouvre les Options.<br/>
+L'adaptateur doit être actif pour être proposé.
+:::
+
+---
+
+### Port d'écoute & Port Forwarding
+
+<small>Le port forwarding *(ou redirection de port)* est une technique de réseau qui permet de rediriger les paquets entrants reçus par un routeur sur un port spécifique vers un appareil précis du réseau local.</small>
+
+1. <h className="v3x-title">Outils ▸ Options ▸ Connexion</h> :<br/>
+Note le "Port utilisé pour les connexions entrantes".
+2. Si ton VPN propose du port forwarding :<br/>
+Ouvre un port et reporte-le ici : Tes seeds seront joignables *(meilleur débit montant, plus de ratio)*.
+
+:::note
+Sans port forwarding, tu seedes quand même mais seulement vers les peers qui peuvent t'atteindre.
+:::
+
+---
+
+### Ajouter un torrent V3X
+
+1. Sur la fiche V3X, télécharge le `.torrent` *(il contient déjà ta passkey)*.
+2. Ouvre-le dans qBittorrent *(double-clic)* et choisis le dossier de destination.
+3. Laisse le torrent en SEED après complétion : C'est ce qui nourrit ton ratio et tes points bonus.
+
+:::danger
+Le `.torrent` V3X contient ta <h className="v3x-title">passkey</h>. Ne le redistribue <h className="v3x-title">**jamais**</h> ailleurs.<br/>
+<h className="v3x-title">**Le partager revient à donner ton compte**</h>.
+:::
+
+---
+
+### Vérifier que rien ne fuite
+
+- Test rapide :<br/>
+Coupe le VPN quelques secondes : qBittorrent doit afficher <h className="v3x-title">"stalled"</h> / ne plus communiquer.<br/>
+S'il continue de télécharger, le bind d'interface n'est pas pris en compte : <h className="v3x-title">reprends l'étape 3</h>.
+- Complète avec un test de fuite DNS et un test d'IP *(voir [VPN & anonymat](http://localhost:3000/ "VPN & Anonymat"))*.
+
+:::success[Récapitulatif]
+Client réglé une bonne fois :<br/>
+- DHT/PeX coupés.
+- qBittorrent lié au VPN.
+- Seeder en continu.
+
+
+Tu es paré pour V3X.
+:::
+
+---
